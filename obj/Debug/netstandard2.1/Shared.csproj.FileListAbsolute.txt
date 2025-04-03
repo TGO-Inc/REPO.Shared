@@ -1,0 +1,10 @@
+/home/theguy920/RiderProjects/REPO_Mods/Shared/bin/Debug/netstandard2.1/Shared.deps.json
+/home/theguy920/RiderProjects/REPO_Mods/Shared/bin/Debug/netstandard2.1/Shared.dll
+/home/theguy920/RiderProjects/REPO_Mods/Shared/bin/Debug/netstandard2.1/Shared.pdb
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.csproj.AssemblyReference.cache
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.AssemblyInfoInputs.cache
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.AssemblyInfo.cs
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.csproj.CoreCompileInputs.cache
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.dll
+/home/theguy920/RiderProjects/REPO_Mods/Shared/obj/Debug/netstandard2.1/Shared.pdb
