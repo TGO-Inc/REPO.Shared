@@ -1,5 +1,10 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Reflection;
 using Shared.Internal;
 using UnityEngine;
 
@@ -13,8 +18,11 @@ public static class API
     public static event Action<Exception, LogType>? OnException;
 
     internal static readonly ConcurrentDictionary<string, Exception> Exceptions = [];
-    static API() { Application.logMessageReceived += Log; }
-    private static void Log(string condition, string stackTrace, LogType type)
+    
+    public static IReadOnlyDictionary<AssemblyName, Assembly> LoadedAssemblies => AssemblyResolver.LoadedAssemblies;
+    public static IReadOnlyDictionary<string, AssemblyDependency> Dependencies => AssemblyResolver.Dependencies;
+    
+    internal static void Log(string condition, string stackTrace, LogType type)
     {
         if (type is LogType.Log or LogType.Warning or LogType.Assert)
             return;

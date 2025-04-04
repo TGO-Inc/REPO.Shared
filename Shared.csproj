@@ -1,11 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" InitialTargets="CustomPreBuild">
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
-        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <AssemblyName>Shared</AssemblyName>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     </PropertyGroup>
-
     <ItemGroup>
         <Reference Include="0Harmony">
             <HintPath>..\..\..\.config\r2modmanPlus-local\REPO\profiles\Default\BepInEx\core\0Harmony.dll</HintPath>
@@ -488,11 +492,20 @@
             <Private>false</Private>
         </Reference>
     </ItemGroup>
-
-    <!-- Copy DLL to plugin folder -->
-    <Target Name="CopyToPluginFolder" AfterTargets="PostBuildEvent">
-        <Copy DestinationFolder="/home/theguy920/.config/r2modmanPlus-local/REPO/profiles/Default/BepInEx/plugins/TheGuy920-Shared/"
-              OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" SourceFiles="$(TargetPath)"/>
+    <ItemGroup>
+        <PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.0-preview.2.25163.2" />
+        <PackageReference Include="System.Runtime" Version="4.3.1" />
+    </ItemGroup>
+    <Import Project="$(ProjectDir)../../REPO_Mods/main.targets" />
+    <Target Name="CustomPreBuild" BeforeTargets="Build">
+        <Exec Command="$(DotNetToolsDirectory)$(PathSeparator)UnityModPackager --pre" WorkingDirectory="$(ProjectDir)" />
     </Target>
-
+    <Target Name="CustomPostBuild" AfterTargets="Build">
+        <Exec Command="$(DotNetToolsDirectory)$(PathSeparator)UnityModPackager --post" WorkingDirectory="$(ProjectDir)" />
+        <ItemGroup>
+            <AllOutputFiles Include="$(TargetDir)*.dll" />
+        </ItemGroup>
+        <Copy SourceFiles="@(AllOutputFiles)" DestinationFolder="$(CopyToDirOnBuild)%(RecursiveDir)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" />
+    </Target>
+    <Import Project="obj/GeneratedResources.targets" />
 </Project>

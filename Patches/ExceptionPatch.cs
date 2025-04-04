@@ -9,9 +9,9 @@ internal class ExceptionPatch
 {
     [HarmonyPostfix]
     [HarmonyPatch("GetStackTrace", typeof(bool))]
-    private static void GetStackTrace(Exception __instance, string __result)
+    private static void GetStackTrace(Exception __instance, string? __result)
     {
-        var unityStr = ExceptionStackTraceStringConverter.ConvertToUnityStackTraceString(__result);
+        var unityStr = ExceptionStackTraceStringConverter.ConvertToUnityStackTraceString(__result ?? __instance.Message);
         API.Exceptions.TryAdd(unityStr, __instance);
     }
 }
