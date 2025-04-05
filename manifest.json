@@ -1,0 +1,9 @@
+{
+    "name": "REPOShared",
+    "version_number": "1.0.2",
+    "website_url": "https://github.com/TGO-Inc/REPO.Shared",
+    "description": "A shared library for REPO mods.",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
