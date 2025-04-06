@@ -6,13 +6,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <AssemblyName>Shared</AssemblyName>
-<<<<<<< Updated upstream
-        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-=======
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
->>>>>>> Stashed changes
         <AssemblyVersion>1.0.2.0</AssemblyVersion>
         <FileVersion>1.0.2.0</FileVersion>
         <PackageId>REPOShared</PackageId>
@@ -23,8 +17,6 @@
         <RepositoryUrl>https://github.com/TGO-Inc/REPO.Shared</RepositoryUrl>
         <DeploymentPostProcessing>true</DeploymentPostProcessing>
         <MtouchEnableDebuggingSymbols>false</MtouchEnableDebuggingSymbols>
-<!--        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>-->
-<!--        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>-->
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Newtonsoft.Json">
