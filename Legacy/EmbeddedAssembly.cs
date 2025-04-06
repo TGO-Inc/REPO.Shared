@@ -1,8 +1,8 @@
 using System.Reflection;
 
-namespace Shared.Internal;
+namespace Shared.Legacy;
 
-public class EmbeddedAssembly(AssemblyName asmName, string path)
+internal class EmbeddedAssembly(AssemblyName asmName, string path)
 {
     public readonly AssemblyName AssemblyName = asmName;
     public readonly string ResourcePath = path;

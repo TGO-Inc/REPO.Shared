@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Reflection;
 using System.Text;
+using Shared.Internal;
 
-namespace Shared.Internal;
+namespace Shared.Legacy;
 
 internal static class AssemblyResolver
 {

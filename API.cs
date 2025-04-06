@@ -19,9 +19,6 @@ public static class API
 
     internal static readonly ConcurrentDictionary<string, Exception> Exceptions = [];
     
-    public static IReadOnlyDictionary<AssemblyName, Assembly> LoadedAssemblies => AssemblyResolver.LoadedAssemblies;
-    public static IReadOnlyDictionary<string, AssemblyDependency> Dependencies => AssemblyResolver.Dependencies;
-    
     internal static void Log(string condition, string stackTrace, LogType type)
     {
         if (type is LogType.Log or LogType.Warning or LogType.Assert)

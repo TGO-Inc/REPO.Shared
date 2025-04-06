@@ -1,18 +1,13 @@
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Shared.Game;
 
 /// <summary>
 /// A MonoBehaviour base class that allows for early initialization.
 /// </summary>
-public abstract class EarlyMonoBehaviour(bool isPersistent = false)
+public abstract class EarlyMonoBehaviour(bool isPersistent = false) : EMonoBehaviour
 {
-    protected virtual void Awake() { }
-    protected virtual void Start() { }
-    protected virtual void Update() { }
-    protected virtual void FixedUpdate() { }
-    protected virtual void OnDestroy() { }
-    
     /// <summary>
     /// Root game object.
     /// </summary>
@@ -43,7 +38,7 @@ public abstract class EarlyMonoBehaviour(bool isPersistent = false)
     private void InternalInitialize()
     {
         this._monoBehaviourProxyLifeTimeObject = this.NewProxyObject.AddComponent<MonoBehaviourProxy>();
-        this._monoBehaviourProxyLifeTimeObject.Set(CheckOnDestroy, CheckAwake, CheckStart, Update, FixedUpdate);
+        this._monoBehaviourProxyLifeTimeObject.Set(this, true);
         // Call CheckAwake(); since it was called by Unity before we could call Set(...);
         this.CheckAwake();
     }
@@ -59,12 +54,11 @@ public abstract class EarlyMonoBehaviour(bool isPersistent = false)
         }
     }
     
-    private void CheckOnDestroy()
+    protected override bool CheckOnDestroy()
     {
         if (isPersistent)
             this.InternalInitialize();
-        else
-            this.OnDestroy();
+        return !isPersistent;
     }
 
     private void CheckAwake()
