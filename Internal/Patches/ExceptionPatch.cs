@@ -1,8 +1,8 @@
-using System;
 using HarmonyLib;
-using Shared.Internal;
+using Shared.Core.Converters;
+using Shared.Internal.Services;
 
-namespace Shared.Patches;
+namespace Shared.Internal.Patches;
 
 [HarmonyPatch(typeof(Exception))]
 internal class ExceptionPatch
@@ -12,6 +12,6 @@ internal class ExceptionPatch
     private static void GetStackTrace(Exception __instance, string? __result)
     {
         var unityStr = ExceptionStackTraceStringConverter.ConvertToUnityStackTraceString(__result ?? __instance.Message);
-        API.Exceptions.TryAdd(unityStr, __instance);
+        ExceptionTracker.RegisterException(unityStr, __instance);
     }
 }

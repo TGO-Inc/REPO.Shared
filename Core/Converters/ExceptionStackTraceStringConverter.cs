@@ -1,8 +1,6 @@
-using System;
-using System.Linq;
 using System.Text;
 
-namespace Shared.Internal;
+namespace Shared.Core.Converters;
 
 public static class ExceptionStackTraceStringConverter
 {
